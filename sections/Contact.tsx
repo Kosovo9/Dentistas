@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { WHATSAPP_NUMBER, CLINIC_LOCATION, CLINIC_EMAIL } from '../constants';
+import { WHATSAPP_NUMBER, CLINIC_LOCATION, CLINIC_EMAIL, TIKTOK_URL } from '../constants';
 
 const Contact: React.FC = () => {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. Acosta, quiero agendar mi valoración digital en su consultorio de Chihuahua.")}`;
@@ -59,6 +59,12 @@ const Contact: React.FC = () => {
                   {CLINIC_EMAIL}
                 </p>
               </a>
+              <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="space-y-3 group block">
+                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em] group-hover:text-gold-luxury transition-colors">TikTok</h4>
+                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-navy-luxury transition-colors">
+                  @enrique15388
+                </p>
+              </a>
             </div>
 
             <div className="pt-8 flex flex-col sm:flex-row gap-6">
@@ -74,12 +80,14 @@ const Contact: React.FC = () => {
               </a>
               
               <a 
-                href={mailtoUrl}
+                href={TIKTOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center border border-navy-luxury text-navy-luxury px-10 py-6 rounded-sm overflow-hidden transition-all duration-500"
               >
-                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Enviar Email</span>
+                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Ver en TikTok</span>
                 <div className="absolute inset-0 bg-navy-luxury translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <span className="relative z-10 group-hover:text-white transition-colors ml-4 text-xs">✉</span>
+                <span className="relative z-10 group-hover:text-white transition-colors ml-4 text-xs font-bold">TikTok</span>
               </a>
             </div>
           </motion.div>

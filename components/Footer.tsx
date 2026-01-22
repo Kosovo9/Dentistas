@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ADMIN_PATH } from '../constants';
+import { ADMIN_PATH, TIKTOK_URL } from '../constants';
 
 const Footer: React.FC = () => {
   return (
@@ -24,8 +24,9 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           <div className="space-y-4">
-            <h4 className="text-white uppercase tracking-widest text-xs font-bold">Privacidad</h4>
+            <h4 className="text-white uppercase tracking-widest text-xs font-bold">Conéctate</h4>
             <ul className="space-y-2 text-sm">
+              <li><a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-luxury transition-colors flex items-center gap-2">TikTok <span className="text-[10px]">@enrique15388</span></a></li>
               <li><a href="#" className="hover:text-gold-luxury transition-colors">Aviso de Privacidad</a></li>
               <li><a href="#" className="hover:text-gold-luxury transition-colors">Términos de Uso</a></li>
               <li><Link to={ADMIN_PATH} className="text-white/10 hover:text-white transition-colors">Administración</Link></li>

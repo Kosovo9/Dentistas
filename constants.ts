@@ -3,6 +3,7 @@ import { Service, GalleryItem, Appointment } from './types';
 
 export const WHATSAPP_NUMBER = "+526145115220";
 export const CLINIC_EMAIL = "eamodonto@gmail.com";
+export const TIKTOK_URL = "https://www.tiktok.com/@enrique15388";
 export const ADMIN_PATH = "/admin-acosta-secure";
 export const CLINIC_LOCATION = "Chihuahua, Chihuahua, México";
 
