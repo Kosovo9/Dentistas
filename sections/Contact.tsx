@@ -1,14 +1,15 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { WHATSAPP_NUMBER, CLINIC_LOCATION } from '../constants';
+import { WHATSAPP_NUMBER, CLINIC_LOCATION, CLINIC_EMAIL } from '../constants';
 
 const Contact: React.FC = () => {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. Acosta, quiero agendar mi valoración digital en su consultorio de Chihuahua.")}`;
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Odontólogo Dr. César Acosta " + CLINIC_LOCATION)}`;
+  const mailtoUrl = `mailto:${CLINIC_EMAIL}`;
 
   return (
-    <section id="contacto" className="py-32 bg-white relative overflow-hidden">
+    <section id="contacto" className="py-32 bg-white relative overflow-hidden border-t border-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           
@@ -20,7 +21,7 @@ const Contact: React.FC = () => {
             className="lg:col-span-5 space-y-16"
           >
             <div className="space-y-6">
-              <span className="text-gold-luxury font-bold tracking-[0.5em] uppercase text-[10px] block">Contacto</span>
+              <span className="text-gold-luxury font-bold tracking-[0.5em] uppercase text-[10px] block">Contacto Directo</span>
               <h2 className="text-5xl md:text-7xl text-navy-luxury luxury-font leading-none tracking-tight">
                 El Comienzo de su <span className="italic font-light">Nueva Imagen</span>
               </h2>
@@ -30,41 +31,55 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-12 pt-4">
-              <div className="space-y-3">
-                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em]">Dirección</h4>
-                <p className="text-slate-400 text-sm leading-relaxed">
+              <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="space-y-3 group block">
+                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em] group-hover:text-gold-luxury transition-colors">Ubicación</h4>
+                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-navy-luxury transition-colors">
                   Av. San Felipe 123, <br />
                   Col. San Felipe, CP 31203, <br />
                   Chihuahua, Chih.
                 </p>
-              </div>
+              </a>
               <div className="space-y-3">
-                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em]">Atención</h4>
+                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em]">Horarios</h4>
                 <p className="text-slate-400 text-sm leading-relaxed">
                   Lunes — Viernes<br />
                   09:00 AM — 07:00 PM<br />
                   Sábados 10:00 AM — 02:00 PM
                 </p>
               </div>
-              <div className="space-y-3">
-                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em]">Directo</h4>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  {WHATSAPP_NUMBER}<br />
-                  hola@drcesaracosta.com
+              <a href={`tel:${WHATSAPP_NUMBER}`} className="space-y-3 group block">
+                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em] group-hover:text-gold-luxury transition-colors">Teléfono</h4>
+                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-navy-luxury transition-colors">
+                  {WHATSAPP_NUMBER}
                 </p>
-              </div>
+              </a>
+              <a href={mailtoUrl} className="space-y-3 group block">
+                <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em] group-hover:text-gold-luxury transition-colors">Email</h4>
+                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-navy-luxury transition-colors">
+                  {CLINIC_EMAIL}
+                </p>
+              </a>
             </div>
 
-            <div className="pt-8">
+            <div className="pt-8 flex flex-col sm:flex-row gap-6">
               <a 
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center bg-navy-luxury text-white px-12 py-6 rounded-sm overflow-hidden transition-all duration-500 shadow-2xl"
+                className="group relative inline-flex items-center justify-center bg-navy-luxury text-white px-10 py-6 rounded-sm overflow-hidden transition-all duration-500 shadow-2xl"
               >
-                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Agendar Valoración Digital</span>
+                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Agendar por WhatsApp</span>
                 <div className="absolute inset-0 bg-gold-luxury translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                 <svg className="relative z-10 ml-4 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </a>
+              
+              <a 
+                href={mailtoUrl}
+                className="group relative inline-flex items-center justify-center border border-navy-luxury text-navy-luxury px-10 py-6 rounded-sm overflow-hidden transition-all duration-500"
+              >
+                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Enviar Email</span>
+                <div className="absolute inset-0 bg-navy-luxury translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                <span className="relative z-10 group-hover:text-white transition-colors ml-4 text-xs">✉</span>
               </a>
             </div>
           </motion.div>
@@ -110,8 +125,6 @@ const Contact: React.FC = () => {
 
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold-luxury/10 to-transparent"></div>
     </section>
   );
 };

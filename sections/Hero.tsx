@@ -6,14 +6,15 @@ import { WHATSAPP_NUMBER } from '../constants';
 const Hero: React.FC = () => {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. César Acosta, me gustaría agendar una cita de valoración.")}`;
 
-  // Estilo para el contorno azul de las letras (Blue Margin/Outline) - Optimizado para legibilidad sobre foto directa
+  // Estilo para el contorno azul de las letras (Blue Margin/Outline) 
+  // Usando el azul navy de la marca para máxima definición
   const textOutlineStyle = {
     textShadow: `
       -2px -2px 0 #0c1524,  
        2px -2px 0 #0c1524,
       -2px  2px 0 #0c1524,
        2px  2px 0 #0c1524,
-       0px  4px 10px rgba(0,0,0,0.8)
+       0px 4px 15px rgba(0,0,0,0.4)
     `
   };
 
@@ -22,16 +23,14 @@ const Hero: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-        duration: 0.8,
-        ease: "easeOut"
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0, 
@@ -41,10 +40,10 @@ const Hero: React.FC = () => {
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0c1524]">
-      {/* Fondo: Fotografía completa y nítida del consultorio */}
+      {/* Fondo: Imagen nítida del consultorio - Sin Blur Global */}
       <div className="absolute inset-0 z-0">
-        {/* Overlay muy sutil para contraste de texto blanco, sin ocultar la foto */}
-        <div className="absolute inset-0 bg-navy-luxury/10 z-10"></div>
+        {/* Gradiente sutil para legibilidad de texto sin ocultar la foto */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-luxury/40 via-transparent to-navy-luxury/60 z-10"></div>
         <img 
           src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=90&w=2400" 
           alt="Consultorio Dr. Acosta" 
@@ -52,19 +51,19 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      {/* Contenedor Principal: Texto directamente sobre la foto */}
-      <div className="relative z-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-20 flex items-center justify-center">
+      {/* Contenedor de Texto: Sin recuadro, centrado y responsivo */}
+      <div className="relative z-20 w-full max-w-7xl px-6 py-20 flex items-center justify-center">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="w-full max-w-[95%] md:max-w-4xl text-center"
+          className="w-full max-w-5xl text-center"
         >
-          {/* Insignia de Ubicación con margen azul */}
-          <motion.div variants={itemVariants} className="inline-block mb-8">
+          {/* Insignia con contorno azul */}
+          <motion.div variants={itemVariants} className="inline-block mb-6 md:mb-10">
             <span 
               style={textOutlineStyle}
-              className="text-gold-luxury uppercase tracking-[0.5em] text-[11px] md:text-sm font-bold border-b-2 border-gold-luxury/40 pb-2"
+              className="text-gold-luxury uppercase tracking-[0.4em] text-[10px] sm:text-xs md:text-sm font-bold border-b-2 border-gold-luxury/40 pb-2"
             >
               EXCLUSIVIDAD Y TECNOLOGÍA EN CHIHUAHUA
             </span>
@@ -73,7 +72,7 @@ const Hero: React.FC = () => {
           <motion.h1 
             variants={itemVariants}
             style={textOutlineStyle}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-10 leading-[1.05] luxury-font text-white font-bold"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-6 md:mb-10 leading-[1.1] md:leading-[1.05] luxury-font text-white font-bold"
           >
             Tu Sonrisa de <span className="italic font-light text-gold-luxury">Élite</span> <br /> es Nuestra Obra Maestra
           </motion.h1>
@@ -81,26 +80,26 @@ const Hero: React.FC = () => {
           <motion.p 
             variants={itemVariants}
             style={textOutlineStyle}
-            className="text-white text-base sm:text-lg md:text-2xl mb-14 max-w-3xl mx-auto font-medium leading-relaxed tracking-wide px-4"
+            className="text-white text-base sm:text-lg md:text-xl lg:text-2xl mb-10 md:mb-16 max-w-3xl mx-auto font-medium leading-relaxed tracking-wide px-4"
           >
             Revolucionamos la estética dental con tecnología digital y un enfoque de <span className="text-gold-luxury underline decoration-gold-luxury/50 underline-offset-8">hospitalidad boutique</span> único en Chihuahua.
           </motion.p>
           
           <motion.div 
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10"
+            className="flex flex-col sm:flex-row items-center justify-center gap-5 md:gap-10 px-8 sm:px-0"
           >
             <a 
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-gold-luxury text-navy-luxury px-10 md:px-14 py-5 md:py-6 rounded-sm font-bold tracking-[0.2em] uppercase text-[11px] md:text-xs transition-all hover:bg-white hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(197,160,89,0.3)]"
+              className="w-full sm:w-auto bg-gold-luxury text-navy-luxury px-10 md:px-14 py-5 md:py-6 rounded-sm font-bold tracking-[0.2em] uppercase text-[11px] md:text-xs transition-all hover:bg-white hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(0,0,0,0.3)]"
             >
               Agenda por WhatsApp Ahora
             </a>
             <a 
               href="#servicios"
-              className="w-full sm:w-auto border-2 border-white/60 text-white px-10 md:px-14 py-5 md:py-6 rounded-sm font-bold tracking-[0.2em] uppercase text-[11px] md:text-xs transition-all hover:bg-white hover:text-navy-luxury active:scale-95 backdrop-blur-sm"
+              className="w-full sm:w-auto border-2 border-white/60 text-white px-10 md:px-14 py-5 md:py-6 rounded-sm font-bold tracking-[0.2em] uppercase text-[11px] md:text-xs transition-all hover:bg-white/10 active:scale-95 backdrop-blur-sm"
             >
               Ver Especialidades
             </a>
@@ -108,14 +107,14 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Indicador de Scroll Decorativo */}
+      {/* Indicador de Scroll sutil */}
       <motion.div 
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.8 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center"
+        animate={{ opacity: 0.6 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="w-[2px] h-20 bg-gradient-to-b from-gold-luxury via-gold-luxury/50 to-transparent"></div>
+        <div className="w-[1px] h-16 md:h-24 bg-gradient-to-b from-gold-luxury via-gold-luxury/50 to-transparent"></div>
       </motion.div>
     </section>
   );
