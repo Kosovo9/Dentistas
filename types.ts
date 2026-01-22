@@ -17,6 +17,7 @@ export interface GalleryItem {
 export interface Appointment {
   id: string;
   patientName: string;
+  patientPhone: string;
   date: string;
   time: string;
   service: string;

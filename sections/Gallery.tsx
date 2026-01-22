@@ -2,9 +2,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useClinic } from '../context/ClinicContext';
+import { WHATSAPP_NUMBER } from '../constants';
 
 const Gallery: React.FC = () => {
   const { gallery } = useClinic();
+
+  const handleMoreInfo = () => {
+    const message = encodeURIComponent("Hola Dr. Acosta, vi su galería de casos de éxito y me gustaría saber si mi caso puede ser tratado con su tecnología.");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -27,7 +33,6 @@ const Gallery: React.FC = () => {
 
   return (
     <section id="resultados" className="py-32 bg-navy-luxury text-white overflow-hidden relative">
-      {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold-luxury/30 to-transparent"></div>
       <div className="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-gold-luxury/5 blur-[120px] rounded-full pointer-events-none"></div>
 
@@ -66,9 +71,9 @@ const Gallery: React.FC = () => {
               key={item.id}
               variants={cardVariants}
               className="group cursor-pointer"
+              onClick={handleMoreInfo}
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-black shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
-                {/* Image Comparison Container */}
                 <div className="flex h-full w-full gap-1">
                   <div className="relative w-1/2 overflow-hidden h-full">
                     <motion.img 
@@ -100,10 +105,9 @@ const Gallery: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Hover Overlay Text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-luxury via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-10">
                   <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-white text-sm font-medium tracking-widest uppercase">Ver Detalle del Caso</p>
+                    <p className="text-white text-sm font-medium tracking-widest uppercase">Consultar este caso</p>
                   </div>
                 </div>
               </div>
@@ -124,13 +128,16 @@ const Gallery: React.FC = () => {
           transition={{ delay: 0.8 }}
           className="mt-32 text-center"
         >
-          <button className="group relative px-16 py-6 border border-gold-luxury/30 text-gold-luxury overflow-hidden transition-all duration-500 hover:border-gold-luxury">
-            <span className="relative z-10 font-bold uppercase tracking-[0.4em] text-[10px]">Galería de Excelencia</span>
+          <button 
+            onClick={handleMoreInfo}
+            className="group relative px-16 py-6 border border-gold-luxury/30 text-gold-luxury overflow-hidden transition-all duration-500 hover:border-gold-luxury"
+          >
+            <span className="relative z-10 font-bold uppercase tracking-[0.4em] text-[10px]">Agendar mi propia transformación</span>
             <div className="absolute inset-0 bg-gold-luxury translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.22, 1, 0.36, 1]"></div>
-            <style>{`.group:hover span { color: #0c1524; }`}</style>
           </button>
         </motion.div>
       </div>
+      <style>{`.group:hover span { color: #0c1524; }`}</style>
     </section>
   );
 };

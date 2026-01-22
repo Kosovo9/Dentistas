@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { WHATSAPP_NUMBER } from '../constants';
+import { WHATSAPP_NUMBER, CLINIC_LOCATION } from '../constants';
 
 const Contact: React.FC = () => {
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d3501.123456789!2d-106.088!3d28.633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ea439498e8339d%3A0x2f641a942a17627!2sChihuahua!5e0!3m2!1sen!2smx!4v1715690000000!5m2!1sen!2smx&key=NONE"; // Placeholder ifram, but styled for luxury
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. Acosta, quiero agendar mi valoración digital en su consultorio de Chihuahua.")}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Odontólogo Dr. César Acosta " + CLINIC_LOCATION)}`;
 
   return (
     <section id="contacto" className="py-32 bg-white relative overflow-hidden">
@@ -48,7 +49,7 @@ const Contact: React.FC = () => {
               <div className="space-y-3">
                 <h4 className="text-navy-luxury font-bold uppercase text-[10px] tracking-[0.3em]">Directo</h4>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  +52 614 511 5220<br />
+                  {WHATSAPP_NUMBER}<br />
                   hola@drcesaracosta.com
                 </p>
               </div>
@@ -56,7 +57,9 @@ const Contact: React.FC = () => {
 
             <div className="pt-8">
               <a 
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center bg-navy-luxury text-white px-12 py-6 rounded-sm overflow-hidden transition-all duration-500 shadow-2xl"
               >
                 <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Agendar Valoración Digital</span>
@@ -73,7 +76,6 @@ const Contact: React.FC = () => {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7 relative h-[650px] group"
           >
-            {/* Interactive Map Container */}
             <div className="absolute inset-0 rounded-sm overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] border border-slate-100">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116634.30154817454!2d-106.16616423985799!3d28.634351368945625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ea439498e8339d%3A0x2f641a942a17627!2sChihuahua!5e0!3m2!1sen!2smx!4v1715690000000!5m2!1sen!2smx" 
@@ -85,7 +87,6 @@ const Contact: React.FC = () => {
                 className="grayscale transition-all duration-700 group-hover:grayscale-0"
               ></iframe>
 
-              {/* Luxury Map Overlay UI */}
               <div className="absolute inset-0 pointer-events-none border-[20px] border-white/80 transition-all duration-700 group-hover:border-white/20"></div>
               
               <div className="absolute bottom-12 left-12 right-12 bg-navy-luxury/90 backdrop-blur-xl p-10 border-l-4 border-gold-luxury shadow-2xl transition-all duration-700 translate-y-4 group-hover:translate-y-0 opacity-100 group-hover:opacity-90">
@@ -95,12 +96,12 @@ const Contact: React.FC = () => {
                     <p className="text-white text-sm font-light">San Felipe, CP 31203, Chihuahua, Chih.</p>
                   </div>
                   <a 
-                    href="https://maps.google.com" 
+                    href={mapsUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-white text-navy-luxury px-8 py-3 rounded-sm text-[10px] font-bold uppercase tracking-widest hover:bg-gold-luxury hover:text-white transition-all shadow-xl"
                   >
-                    Obtener Direcciones
+                    Abrir en Google Maps
                   </a>
                 </div>
               </div>
@@ -110,7 +111,6 @@ const Contact: React.FC = () => {
         </div>
       </div>
 
-      {/* Background Decorative Gold Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold-luxury/10 to-transparent"></div>
     </section>
   );

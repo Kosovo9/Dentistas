@@ -6,142 +6,117 @@ import { WHATSAPP_NUMBER } from '../constants';
 const Hero: React.FC = () => {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. César Acosta, me gustaría agendar una cita de valoración.")}`;
 
-  // Variantes para el contenedor de texto (Staggered Children)
+  // Estilo para el contorno azul de las letras (Blue Margin/Outline) - Optimizado para legibilidad sobre foto directa
+  const textOutlineStyle = {
+    textShadow: `
+      -2px -2px 0 #0c1524,  
+       2px -2px 0 #0c1524,
+      -2px  2px 0 #0c1524,
+       2px  2px 0 #0c1524,
+       0px  4px 10px rgba(0,0,0,0.8)
+    `
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.8,
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+        duration: 0.8,
+        ease: "easeOut"
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
+    hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      filter: 'blur(0px)',
-      transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
+      transition: { duration: 0.8, ease: "easeOut" }
     },
   };
 
-  /**
-   * Estilo de "Contorno" (Outline) solicitado con el azul acua de la imagen.
-   * Se utiliza una combinación de múltiples sombras para crear un borde definido
-   * y un sutil resplandor que hace resaltar el blanco.
-   */
-  const aquaContourStyle = {
-    color: '#ffffff',
-    textShadow: `
-      -1px -1px 0 #00b4d8,  
-       1px -1px 0 #00b4d8,
-      -1px  1px 0 #00b4d8,
-       1px  1px 0 #00b4d8,
-       0 0 15px rgba(0, 180, 216, 0.5)
-    `
-  };
-
   return (
-    <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden bg-navy-luxury">
-      {/* Fondo Cinemático: Paneo ascendente + Fade-in + Zoom sutil */}
-      <motion.div 
-        initial={{ scale: 1.1, y: 50, opacity: 0 }}
-        animate={{ scale: 1, y: 0, opacity: 1 }}
-        transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 z-0"
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-luxury/80 via-navy-luxury/30 to-navy-luxury/90 z-10"></div>
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0c1524]">
+      {/* Fondo: Fotografía completa y nítida del consultorio */}
+      <div className="absolute inset-0 z-0">
+        {/* Overlay muy sutil para contraste de texto blanco, sin ocultar la foto */}
+        <div className="absolute inset-0 bg-navy-luxury/10 z-10"></div>
         <img 
           src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=90&w=2400" 
-          alt="Consultorio de Lujo" 
-          className="w-full h-full object-cover transform"
+          alt="Consultorio Dr. Acosta" 
+          className="w-full h-full object-cover"
         />
-      </motion.div>
-
-      {/* Contenido Principal Sincronizado y Balanceado */}
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-20 text-center px-6 max-w-4xl"
-      >
-        <motion.span 
-          variants={itemVariants}
-          className="text-gold-luxury uppercase tracking-[0.5em] text-[9px] md:text-[11px] mb-6 block font-bold opacity-100 drop-shadow-lg"
-        >
-          Exclusividad y Tecnología en Chihuahua
-        </motion.span>
-        
-        <motion.h1 
-          variants={itemVariants}
-          style={aquaContourStyle}
-          className="text-4xl md:text-6xl lg:text-7xl mb-8 leading-[1.1] luxury-font tracking-tight"
-        >
-          Tu Sonrisa de <span className="italic font-light text-gold-luxury" style={{ textShadow: 'none' }}>Élite</span> <br className="hidden md:block" /> es Nuestra Obra Maestra
-        </motion.h1>
-        
-        <motion.p 
-          variants={itemVariants}
-          style={aquaContourStyle}
-          className="text-white/90 text-base md:text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed tracking-wide drop-shadow-md"
-        >
-          Revolucionamos la estética dental con tecnología digital de vanguardia y un enfoque de <span className="text-gold-luxury font-medium" style={{ textShadow: 'none' }}>hospitalidad boutique</span> único en el norte de México.
-        </motion.p>
-        
-        <motion.div 
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
-        >
-          <a 
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative bg-gold-luxury text-navy-luxury px-10 py-4 rounded-sm font-bold tracking-[0.25em] uppercase text-[10px] transition-all duration-500 overflow-hidden shadow-[0_20px_50px_-15px_rgba(197,160,89,0.4)]"
-          >
-            <span className="relative z-10">Agenda por WhatsApp</span>
-            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-          </a>
-          <a 
-            href="#servicios"
-            className="group relative border border-white/30 text-white px-10 py-4 rounded-sm font-bold tracking-[0.25em] uppercase text-[10px] transition-all duration-500 hover:border-gold-luxury hover:text-gold-luxury backdrop-blur-md bg-white/5"
-          >
-            Nuestros Servicios
-          </a>
-        </motion.div>
-      </motion.div>
-
-      {/* Indicador de Scroll Cinemático */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.5, duration: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
-      >
-        <span className="text-white/20 uppercase tracking-[0.4em] text-[8px] font-bold">Descubrir</span>
-        <div className="w-[1px] h-16 bg-gradient-to-b from-gold-luxury/40 to-transparent relative overflow-hidden">
-          <motion.div 
-            animate={{ 
-              y: [-80, 80],
-              opacity: [0, 1, 0]
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              ease: "linear" 
-            }}
-            className="absolute top-0 left-0 w-full h-10 bg-gradient-to-b from-transparent via-white to-transparent"
-          />
-        </div>
-      </motion.div>
-
-      {/* Efectos de Luz de Fondo (Bloom) */}
-      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-        <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-gold-luxury/5 blur-[180px] rounded-full"></div>
-        <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[60%] bg-cyan-400/5 blur-[150px] rounded-full"></div>
       </div>
+
+      {/* Contenedor Principal: Texto directamente sobre la foto */}
+      <div className="relative z-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-20 flex items-center justify-center">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="w-full max-w-[95%] md:max-w-4xl text-center"
+        >
+          {/* Insignia de Ubicación con margen azul */}
+          <motion.div variants={itemVariants} className="inline-block mb-8">
+            <span 
+              style={textOutlineStyle}
+              className="text-gold-luxury uppercase tracking-[0.5em] text-[11px] md:text-sm font-bold border-b-2 border-gold-luxury/40 pb-2"
+            >
+              EXCLUSIVIDAD Y TECNOLOGÍA EN CHIHUAHUA
+            </span>
+          </motion.div>
+          
+          <motion.h1 
+            variants={itemVariants}
+            style={textOutlineStyle}
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-10 leading-[1.05] luxury-font text-white font-bold"
+          >
+            Tu Sonrisa de <span className="italic font-light text-gold-luxury">Élite</span> <br /> es Nuestra Obra Maestra
+          </motion.h1>
+          
+          <motion.p 
+            variants={itemVariants}
+            style={textOutlineStyle}
+            className="text-white text-base sm:text-lg md:text-2xl mb-14 max-w-3xl mx-auto font-medium leading-relaxed tracking-wide px-4"
+          >
+            Revolucionamos la estética dental con tecnología digital y un enfoque de <span className="text-gold-luxury underline decoration-gold-luxury/50 underline-offset-8">hospitalidad boutique</span> único en Chihuahua.
+          </motion.p>
+          
+          <motion.div 
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10"
+          >
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto bg-gold-luxury text-navy-luxury px-10 md:px-14 py-5 md:py-6 rounded-sm font-bold tracking-[0.2em] uppercase text-[11px] md:text-xs transition-all hover:bg-white hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(197,160,89,0.3)]"
+            >
+              Agenda por WhatsApp Ahora
+            </a>
+            <a 
+              href="#servicios"
+              className="w-full sm:w-auto border-2 border-white/60 text-white px-10 md:px-14 py-5 md:py-6 rounded-sm font-bold tracking-[0.2em] uppercase text-[11px] md:text-xs transition-all hover:bg-white hover:text-navy-luxury active:scale-95 backdrop-blur-sm"
+            >
+              Ver Especialidades
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Indicador de Scroll Decorativo */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.8 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center"
+      >
+        <div className="w-[2px] h-20 bg-gradient-to-b from-gold-luxury via-gold-luxury/50 to-transparent"></div>
+      </motion.div>
     </section>
   );
 };
