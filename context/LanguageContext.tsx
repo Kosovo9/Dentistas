@@ -34,12 +34,12 @@ export const translations: any = {
     en: 'Legal Notice: Treatment results may vary by patient. The information on this site is for informational purposes only and does not substitute a professional diagnosis.' 
   },
   footer_dev_cta: { 
-    es: '¿Te gustó esta página/app? ¡Pregunta por la tuya sin compromiso!', 
-    en: 'Did you like this page/app? Ask for yours without any obligation!' 
+    es: '¿Te gusta esta App 10x? Entrega hoy mismo (3 cupos) y paga al recibir. ¡Código puro, cero plantillas!', 
+    en: 'Love this 10x App? Same-day delivery (3 spots) & pay on delivery. Pure code, zero templates!' 
   },
   footer_dev_btn: { 
-    es: 'Cotizar mi App/Web', 
-    en: 'Get my App/Web' 
+    es: 'Cotizar mi App de Élite', 
+    en: 'Get my Elite App' 
   },
   // Admin Panel Translations
   admin_title: { es: 'Panel Maestro', en: 'Master Panel' },
