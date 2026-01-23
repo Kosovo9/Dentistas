@@ -9,8 +9,8 @@ const Pricing: React.FC = () => {
 
   const handleConsult = (serviceName?: string) => {
     const text = serviceName 
-      ? `Hola Dr. Acosta, me interesa el servicio de "${serviceName}" que vi en su sitio web. Me gustaría conocer la disponibilidad de citas.`
-      : "Hola Dr. Acosta, me interesa conocer más sobre los planes de financiamiento y la valoración inicial en su consultorio.";
+      ? `Hola Dr. Enrique Acosta, me interesa el servicio de "${serviceName}" que vi en su sitio web. Me gustaría conocer la disponibilidad de citas.`
+      : "Hola Dr. Enrique Acosta, me interesa conocer más sobre los planes de financiamiento y la valoración inicial en su consultorio.";
     
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');

@@ -7,18 +7,19 @@ import { WHATSAPP_NUMBER } from '../constants';
 const Services: React.FC = () => {
   const { services } = useClinic();
 
+  // Ordenar para que los destacados aparezcan primero
   const sortedServices = [...services].sort((a, b) => {
     if (a.featured === b.featured) return 0;
     return a.featured ? -1 : 1;
   });
 
   const handleConsultation = (serviceName: string) => {
-    const message = encodeURIComponent(`Hola Dr. César Acosta, me interesa obtener más información sobre el tratamiento: ${serviceName}.`);
+    const message = encodeURIComponent(`Hola Dr. Enrique Acosta, me interesa obtener más información sobre el tratamiento de "${serviceName}" que vi en su plataforma digital.`);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
   };
 
   return (
-    <section id="servicios" className="py-32 bg-[#fcfcfc] relative">
+    <section id="servicios" className="py-32 bg-[#fcfcfc] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -39,18 +40,18 @@ const Services: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`group relative bg-white p-12 h-full flex flex-col border transition-all duration-500 ${service.featured ? 'border-gold-luxury/40 shadow-xl' : 'border-slate-100'}`}
+              className={`group relative bg-white p-12 h-full flex flex-col border transition-all duration-500 hover:-translate-y-2 ${service.featured ? 'border-gold-luxury/40 shadow-xl' : 'border-slate-100 shadow-sm'}`}
             >
               {service.featured && (
                 <div className="absolute top-0 right-0">
-                  <div className="bg-gold-luxury text-navy-luxury text-[8px] font-bold uppercase tracking-widest px-4 py-1.5">Popular</div>
+                  <div className="bg-gold-luxury text-navy-luxury text-[8px] font-black uppercase tracking-widest px-4 py-1.5 shadow-lg">Popular</div>
                 </div>
               )}
 
               <span className="absolute top-8 left-10 text-6xl font-bold text-slate-100/50 select-none group-hover:text-gold-luxury/10 transition-colors">0{index + 1}</span>
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="mb-10 text-gold-luxury w-12 h-12 flex items-center justify-center border border-gold-luxury/20 rounded-sm">
+                <div className="mb-10 text-gold-luxury w-12 h-12 flex items-center justify-center border border-gold-luxury/20 rounded-sm group-hover:bg-gold-luxury group-hover:text-navy-luxury transition-all duration-500">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                   </svg>
@@ -72,7 +73,7 @@ const Services: React.FC = () => {
                   
                   <button 
                     onClick={() => handleConsultation(service.name)}
-                    className="w-full py-4 text-center border border-navy-luxury text-navy-luxury hover:bg-navy-luxury hover:text-white transition-all font-bold uppercase tracking-[0.2em] text-[9px]"
+                    className="w-full py-4 text-center border border-navy-luxury text-navy-luxury hover:bg-navy-luxury hover:text-white transition-all duration-500 font-bold uppercase tracking-[0.2em] text-[9px] active:scale-95"
                   >
                     Consultar Tratamiento
                   </button>

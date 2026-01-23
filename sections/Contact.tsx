@@ -1,11 +1,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useClinic } from '../context/ClinicContext';
 import { WHATSAPP_NUMBER, CLINIC_LOCATION, CLINIC_EMAIL, TIKTOK_URL } from '../constants';
 
 const Contact: React.FC = () => {
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. Acosta, quiero agendar mi valoración digital en su consultorio de Chihuahua.")}`;
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Odontólogo Dr. César Acosta " + CLINIC_LOCATION)}`;
+  const { siteContent } = useClinic();
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. Enrique Acosta, quiero agendar mi valoración digital en su consultorio de Chihuahua.")}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Odontólogo Dr. Enrique Acosta " + CLINIC_LOCATION)}`;
   const mailtoUrl = `mailto:${CLINIC_EMAIL}`;
 
   return (
@@ -23,10 +25,13 @@ const Contact: React.FC = () => {
             <div className="space-y-6">
               <span className="text-gold-luxury font-bold tracking-[0.5em] uppercase text-[10px] block">Contacto Directo</span>
               <h2 className="text-5xl md:text-7xl text-navy-luxury luxury-font leading-none tracking-tight">
-                El Comienzo de su <span className="italic font-light">Nueva Imagen</span>
+                {siteContent.contactTitle.split(' ').map((word, i) => 
+                  word.toLowerCase() === 'nueva' || word.toLowerCase() === 'imagen' ? 
+                  <span key={i} className="italic font-light"> {word} </span> : word + ' '
+                )}
               </h2>
               <p className="text-slate-500 text-lg font-light leading-relaxed max-w-md">
-                Ubicados en el epicentro médico de Chihuahua, nuestro consultorio es un santuario de tecnología y diseño.
+                {siteContent.contactSubtitle}
               </p>
             </div>
 
@@ -77,17 +82,6 @@ const Contact: React.FC = () => {
                 <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Agendar por WhatsApp</span>
                 <div className="absolute inset-0 bg-gold-luxury translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                 <svg className="relative z-10 ml-4 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </a>
-              
-              <a 
-                href={TIKTOK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center border border-navy-luxury text-navy-luxury px-10 py-6 rounded-sm overflow-hidden transition-all duration-500"
-              >
-                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Ver en TikTok</span>
-                <div className="absolute inset-0 bg-navy-luxury translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <span className="relative z-10 group-hover:text-white transition-colors ml-4 text-xs font-bold">TikTok</span>
               </a>
             </div>
           </motion.div>

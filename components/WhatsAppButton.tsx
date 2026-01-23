@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { WHATSAPP_NUMBER, CLINIC_EMAIL, TIKTOK_URL } from '../constants';
 
 const WhatsAppButton: React.FC = () => {
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. Acosta, me gustaría agendar una cita de valoración en Chihuahua.")}`;
-  const mailtoUrl = `mailto:${CLINIC_EMAIL}?subject=Consulta%20Dental%20-%20Dr.%20Acosta&body=Hola%20Dr.%20César%20Acosta,%0D%0A%0D%0AMe%20gustaría%20solicitar%20información%20sobre...`;
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola Dr. Enrique Acosta, me gustaría agendar una cita de valoración inicial en su consultorio de Chihuahua.")}`;
+  const mailtoUrl = `mailto:${CLINIC_EMAIL}?subject=Consulta%20Dental%20-%20Dr.%20Acosta&body=Hola%20Dr.%20Enrique%20Acosta,%0D%0A%0D%0AMe%20gustaría%20solicitar%20información%20sobre...`;
 
   const socialActions = [
     {
@@ -34,7 +34,7 @@ const WhatsAppButton: React.FC = () => {
 
   return (
     <div className="fixed bottom-8 right-8 z-[100] flex items-center gap-4">
-      {/* Botones Secundarios: TikTok y Email */}
+      {/* Botones Secundarios */}
       <div className="flex items-center gap-3">
         {socialActions.map((action, idx) => (
           <motion.a
@@ -55,7 +55,7 @@ const WhatsAppButton: React.FC = () => {
         ))}
       </div>
 
-      {/* Botón Principal: WhatsApp (Sustituye al +) */}
+      {/* Botón Principal: WhatsApp */}
       <motion.a
         href={whatsappUrl}
         target="_blank"
@@ -69,10 +69,9 @@ const WhatsAppButton: React.FC = () => {
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.767 5.767 0 1.267.405 2.455 1.083 3.44l-1.037 3.803 3.967-1.037a5.747 5.747 0 0 0 2.754.701c3.181 0 5.767-2.586 5.767-5.767 0-3.181-2.586-5.767-5.767-5.767zm3.39 8.161c-.146.411-.852.753-1.183.8-.331.047-.753.116-2.126-.457-1.745-.733-2.871-2.515-2.958-2.631-.087-.116-.713-.948-.713-1.815 0-.867.457-1.295.62-1.468.163-.174.354-.216.471-.216.116 0 .231 0 .331.006.107.006.246-.04.385.293.146.353.5.122.569.261s.116.273.058.388c-.058.116-.116.19-.174.261-.058.071-.122.146-.071.231.052.087.231.382.494.618.341.306.63.402.723.446.092.043.146.037.202-.023.058-.06.246-.286.312-.382.067-.097.133-.081.225-.047s.583.275.684.326c.101.051.168.076.19.116.022.04.022.231-.073.442z"/>
         </svg>
         <span className="absolute -top-14 left-1/2 -translate-x-1/2 bg-gold-luxury text-navy-luxury text-[10px] font-black px-4 py-2 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity tracking-[0.2em] pointer-events-none whitespace-nowrap shadow-2xl">
-          WHATSAPP
+          AGENDAR CITA
         </span>
         
-        {/* Efecto de pulso para atención visual */}
         <span className="absolute inset-0 rounded-full bg-gold-luxury animate-ping opacity-20 pointer-events-none"></span>
       </motion.a>
     </div>

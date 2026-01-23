@@ -24,10 +24,21 @@ export interface Appointment {
   status: 'pending' | 'confirmed' | 'completed';
 }
 
-export interface ClinicData {
-  phone: string;
-  address: string;
-  email: string;
-  hours: string;
-  mapUrl: string;
+export interface SiteContent {
+  heroTitle: string;
+  heroSubtitle: string;
+  heroCta: string;
+  philosophyTitle: string;
+  philosophyText: string;
+  contactTitle: string;
+  contactSubtitle: string;
+  smilesCount: number;
+}
+
+export type Language = 'es' | 'en';
+
+export interface Translations {
+  [key: string]: {
+    [lang in Language]: string;
+  };
 }

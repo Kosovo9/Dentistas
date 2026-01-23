@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
 import WhatsAppButton from './components/WhatsAppButton';
+import MusicPlayer from './components/MusicPlayer';
 import { ADMIN_PATH } from './constants';
 import { ClinicProvider } from './context/ClinicContext';
 import { AnimatePresence } from 'framer-motion';
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           </main>
           <Footer />
           <WhatsAppButton />
+          <MusicPlayer />
         </div>
       </HashRouter>
     </ClinicProvider>

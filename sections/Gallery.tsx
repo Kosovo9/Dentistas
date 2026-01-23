@@ -8,7 +8,7 @@ const Gallery: React.FC = () => {
   const { gallery } = useClinic();
 
   const handleMoreInfo = () => {
-    const message = encodeURIComponent("Hola Dr. Acosta, vi su galería de casos de éxito y me gustaría saber si mi caso puede ser tratado con su tecnología.");
+    const message = encodeURIComponent("Hola Dr. Enrique Acosta, vi su galería de casos de éxito y me gustaría saber si mi caso puede ser tratado con su tecnología.");
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
   };
 
