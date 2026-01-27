@@ -211,30 +211,22 @@ const AdminDashboard: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-24">
                   {/* Hero Settings */}
                   <div className="space-y-12">
-                    <h4 className="text-[11px] font-black uppercase tracking-[0.6em] text-white/30 border-l-2 border-gold-luxury pl-6">{t('admin_hero_section')}</h4>
+                    <h4 className="text-[11px] font-black uppercase tracking-[0.6em] text-white/30 border-l-2 border-gold-luxury pl-6">CMS: Hero Section</h4>
                     <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">{t('admin_hero_title')}</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Título Principal</label>
                       <input name="heroTitle" defaultValue={siteContent.heroTitle} className="w-full bg-transparent border-b border-white/10 p-6 text-white font-bold outline-none focus:border-gold-luxury transition-all text-xl" />
                     </div>
                     <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">{t('admin_hero_subtitle')}</label>
+                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Descripción Corta</label>
                       <textarea name="heroSubtitle" defaultValue={siteContent.heroSubtitle} rows={6} className="w-full bg-transparent border border-white/10 p-6 text-white font-light outline-none focus:border-gold-luxury transition-all text-sm leading-relaxed" />
                     </div>
                   </div>
 
-                  {/* Contact & Counter Settings */}
+                  {/* Counter & Stats */}
                   <div className="space-y-12">
-                    <h4 className="text-[11px] font-black uppercase tracking-[0.6em] text-white/30 border-l-2 border-gold-luxury pl-6">{t('admin_contact_section')}</h4>
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">{t('admin_contact_title')}</label>
-                      <input name="contactTitle" defaultValue={siteContent.contactTitle} className="w-full bg-transparent border-b border-white/10 p-6 text-white font-bold outline-none focus:border-gold-luxury transition-all text-xl" />
-                    </div>
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">{t('admin_contact_subtitle')}</label>
-                      <textarea name="contactSubtitle" defaultValue={siteContent.contactSubtitle} rows={6} className="w-full bg-transparent border border-white/10 p-6 text-white font-light outline-none focus:border-gold-luxury transition-all text-sm leading-relaxed" />
-                    </div>
+                    <h4 className="text-[11px] font-black uppercase tracking-[0.6em] text-white/30 border-l-2 border-gold-luxury pl-6">CMS: Data Engine</h4>
                     <div className="pt-8 space-y-6">
-                      <label className="text-[11px] font-black uppercase tracking-[0.4em] text-gold-luxury">{t('admin_smiles_count')}</label>
+                      <label className="text-[11px] font-black uppercase tracking-[0.4em] text-gold-luxury">Contador Global de Sonrisas</label>
                       <div className="relative group">
                         <input type="number" name="smilesCount" defaultValue={siteContent.smilesCount} className="w-full bg-gold-luxury/10 border border-gold-luxury/20 p-10 text-gold-luxury font-black text-6xl outline-none group-hover:bg-gold-luxury/20 transition-all text-center" />
                         <span className="absolute left-6 top-1/2 -translate-y-1/2 text-gold-luxury/30 text-5xl font-black">✨</span>

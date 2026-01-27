@@ -55,7 +55,7 @@ const SEO: React.FC<SEOProps> = ({
       ],
       "sameAs": [
         "https://www.tiktok.com/@enrique15388",
-        "https://wa.me/526145115220"
+        `https://wa.me/${WHATSAPP_NUMBER}`
       ]
     };
 

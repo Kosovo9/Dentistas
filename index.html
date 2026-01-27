@@ -53,6 +53,39 @@
         ::-webkit-scrollbar-track { background: #0c1524; }
         ::-webkit-scrollbar-thumb { background: #c5a059; border-radius: 10px; }
         
+        /* Efecto de Borde Llamativo Profesional */
+        .btn-luxury-frame {
+            position: relative;
+            padding: 1.25rem 2.5rem;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .btn-luxury-frame::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            border-radius: 2px;
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+        .btn-luxury-frame:hover::before {
+            inset: 0px;
+            border-color: #c5a059;
+            background: rgba(197, 160, 89, 0.05);
+        }
+
+        /* Texto Blanco con "Borde" Profesional (Glow/Shadow) */
+        .luxury-text-pop {
+            text-shadow: 0 0 1px rgba(255,255,255,0.3), 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c5a059;
+        }
+
         /* Previene Layout Shift */
         .framer-motion-container { contain: paint; }
     </style>

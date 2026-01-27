@@ -72,16 +72,15 @@ const Contact: React.FC = () => {
               </a>
             </div>
 
-            <div className="pt-8 flex flex-col sm:flex-row gap-6">
+            <div className="pt-12">
               <a 
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center bg-navy-luxury text-white px-10 py-6 rounded-sm overflow-hidden transition-all duration-500 shadow-2xl"
+                className="btn-luxury-frame group relative inline-flex items-center justify-center bg-gold-luxury text-navy-luxury rounded-sm transition-all duration-700 shadow-[0_30px_60px_-15px_rgba(197,160,89,0.3)] hover:scale-105"
               >
-                <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-[10px]">Agendar por WhatsApp</span>
-                <div className="absolute inset-0 bg-gold-luxury translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <svg className="relative z-10 ml-4 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <span className="relative z-10 font-black uppercase tracking-[0.4em] text-[11px]">AGENDA POR WHATSAPP AHORA</span>
+                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
               </a>
             </div>
           </motion.div>

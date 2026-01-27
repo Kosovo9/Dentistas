@@ -7,11 +7,14 @@ export interface Service {
   featured: boolean;
 }
 
+export type GalleryCategory = 'Individual' | 'Pareja' | 'Familia';
+
 export interface GalleryItem {
   id: string;
   beforeUrl: string;
   afterUrl: string;
   description: string;
+  category: GalleryCategory;
 }
 
 export interface Appointment {
@@ -36,6 +39,7 @@ export interface SiteContent {
 }
 
 export type Language = 'es' | 'en';
+export type Currency = 'MXN' | 'USD';
 
 export interface Translations {
   [key: string]: {

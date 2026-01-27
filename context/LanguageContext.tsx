@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Language } from '../types';
 
 interface LanguageContextType {
@@ -11,68 +11,54 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const translations: any = {
+  // Navigation
   nav_inicio: { es: 'INICIO', en: 'HOME' },
   nav_servicios: { es: 'SERVICIOS', en: 'SERVICES' },
   nav_resultados: { es: 'RESULTADOS', en: 'RESULTS' },
   nav_precios: { es: 'PRECIOS', en: 'PRICING' },
   nav_contacto: { es: 'CONTACTO', en: 'CONTACT' },
-  nav_reservar: { es: 'RESERVAR', en: 'BOOK NOW' },
-  hero_elite: { es: 'Élite', en: 'Elite' },
+  nav_reservar: { es: 'RESERVAR CITA', en: 'BOOK APPOINTMENT' },
+
+  // Hero Section
   hero_tag: { es: 'EXCLUSIVIDAD Y TECNOLOGÍA EN CHIHUAHUA', en: 'EXCLUSIVITY & TECHNOLOGY IN CHIHUAHUA' },
-  hero_p: { es: 'Dentista en Chihuahua: Revolucionamos la estética dental con tecnología digital.', en: 'Dentist in Chihuahua: Revolutionizing dental aesthetics with digital technology.' },
-  btn_whatsapp: { es: 'Agenda por WhatsApp Ahora', en: 'Book via WhatsApp Now' },
-  btn_specialties: { es: 'Ver Especialidades', en: 'View Specialties' },
-  philo_tag: { es: 'Nuestra Filosofía', en: 'Our Philosophy' },
-  philo_title: { es: 'Hospitalidad y Ciencia en Armonía', en: 'Hospitality & Science in Harmony' },
-  philo_p: { es: 'Entendemos que el lujo reside en la tranquilidad.', en: 'We understand that luxury lies in tranquility.' },
-  pricing_tag: { es: 'Transparencia', en: 'Transparency' },
-  pricing_title: { es: 'Inversión en su Imagen', en: 'Investment in your Image' },
-  faq_tag: { es: 'Preguntas Frecuentes', en: 'FAQ' },
-  faq_title: { es: 'Resolvemos tus Dudas', en: 'Solving your Doubts' },
-  footer_disclaimer: { 
-    es: 'Aviso Legal: Los resultados de los tratamientos pueden variar según cada paciente. La información en este sitio es meramente informativa y no sustituye el diagnóstico de un profesional colegiado.', 
-    en: 'Legal Notice: Treatment results may vary by patient. The information on this site is for informational purposes only and does not substitute a professional diagnosis.' 
-  },
+  hero_urgency: { es: 'ENTREGA HOY MISMO — PAGO AL RECIBIR', en: 'SAME DAY DELIVERY — PAY UPON RECEIPT' },
+  hero_cta: { es: 'AGENDA POR WHATSAPP AHORA', en: 'BOOK VIA WHATSAPP NOW' },
+
+  // Elite Features (New 10)
+  feat_title: { es: 'Ingeniería de Élite', en: 'Elite Engineering' },
+  feat_1_title: { es: 'Velocidad React/Vite', en: 'React/Vite Performance' },
+  feat_1_desc: { es: 'Carga instantánea (100/100 Google Speed) para evitar rebotes.', en: 'Instant load speeds (100/100 Google Speed) to eliminate bounce rates.' },
+  feat_2_title: { es: 'Hospitality-UX', en: 'Hospitality-UX Design' },
+  feat_2_desc: { es: 'Diseño psicológico que reduce la ansiedad y genera confianza.', en: 'Psychological layout designed to reduce anxiety and build trust.' },
+  feat_3_title: { es: 'Panel Maestro Privado', en: 'Private Command Center' },
+  feat_3_desc: { es: 'Gestión total de citas y contenidos sin depender de terceros.', en: 'Full control over appointments and content, no 3rd party needed.' },
+  feat_4_title: { es: 'SEO Quirúrgico', en: 'Surgical SEO' },
+  feat_4_desc: { es: 'Estructura JSON-LD nativa para dominar Google Maps.', en: 'Native JSON-LD injection for Google Maps local dominance.' },
+  feat_5_title: { es: 'Smart-WhatsApp Sync', en: 'Smart-WhatsApp Sync' },
+  feat_5_desc: { es: 'Leads con contexto exacto del tratamiento de interés.', en: 'Leads arrive with exact context of the desired treatment.' },
+  feat_6_title: { es: 'Seguridad AES-256', en: 'AES-256 Security' },
+  feat_6_desc: { es: 'Encriptación grado bancario para tus datos clínicos.', en: 'Bank-grade encryption for your clinical data.' },
+  feat_7_title: { es: 'Omnicanalidad Total', en: 'Universal Device Support' },
+  feat_7_desc: { es: 'Visualización perfecta en móviles, tablets y pantallas 4K.', en: 'Flawless display on mobile, tablets, and 4K screens.' },
+  feat_8_title: { es: 'Galería HD Morphing', en: 'HD Morphing Gallery' },
+  feat_8_desc: { es: 'Sistemas de Antes/Después optimizados para alto impacto.', en: 'High-impact Before/After systems for maximum visual conversion.' },
+  feat_9_title: { es: 'Escalabilidad Infinita', en: 'Infinite Scalability' },
+  feat_9_desc: { es: 'Arquitectura lista para pagos y portales de paciente.', en: 'Future-proof architecture for payments and patient portals.' },
+  feat_10_title: { es: 'Cero Plantillas', en: 'Zero Templates' },
+  feat_10_desc: { es: 'Código escrito a mano para una exclusividad total.', en: 'Hand-written code for absolute brand exclusivity.' },
+
+  // Developer CTAs
   footer_dev_cta: { 
-    es: '¿Te gusta esta App 10x? Entrega hoy mismo (3 cupos) y paga al recibir. ¡Código puro, cero plantillas!', 
-    en: 'Love this 10x App? Same-day delivery (3 spots) & pay on delivery. Pure code, zero templates!' 
+    es: '¿Te gusta esta App 10x? Entrega hoy mismo (3 cupos) y paga al recibir. ¡Código puro a la medida!', 
+    en: 'Love this 10x App? Same-day delivery (3 spots) & pay on delivery. Pure bespoke code!' 
   },
-  footer_dev_btn: { 
-    es: 'Cotizar mi App de Élite', 
-    en: 'Get my Elite App' 
-  },
-  // Admin Panel Translations
+  footer_dev_btn: { es: 'Cotizar mi App de Élite', en: 'Get my Elite App' },
+
+  // Admin
   admin_title: { es: 'Panel Maestro', en: 'Master Panel' },
   admin_mode: { es: 'Modo Admin', en: 'Admin Mode' },
-  admin_view_site: { es: 'Ver Sitio', en: 'View Site' },
-  admin_tab_citas: { es: 'Citas', en: 'Appointments' },
-  admin_tab_servicios: { es: 'Servicios', en: 'Services' },
-  admin_tab_galeria: { es: 'Galería', en: 'Gallery' },
-  admin_tab_cms: { es: 'CMS', en: 'CMS' },
-  admin_patient: { es: 'Paciente', en: 'Patient' },
-  admin_date: { es: 'Fecha', en: 'Date' },
-  admin_time: { es: 'Hora', en: 'Time' },
-  admin_register: { es: 'Registrar en Agenda', en: 'Register in Schedule' },
-  admin_save_changes: { es: 'Guardar Cambios en la Web', en: 'Save Changes to Web' },
-  admin_hero_section: { es: 'Sección Hero', en: 'Hero Section' },
-  admin_contact_section: { es: 'Sección Contacto', en: 'Contact Section' },
-  admin_smiles_count: { es: 'Contador de Sonrisas', en: 'Smiles Counter' },
-  admin_hero_title: { es: 'Título Principal Hero', en: 'Hero Main Title' },
-  admin_hero_subtitle: { es: 'Descripción Hero', en: 'Hero Description' },
-  admin_hero_cta: { es: 'Texto Botón', en: 'Button Text' },
-  admin_contact_title: { es: 'Título de Contacto', en: 'Contact Title' },
-  admin_contact_subtitle: { es: 'Subtítulo de Contacto', en: 'Contact Subtitle' },
-  admin_clinic_name: { es: 'Consultorio Dr. Enrique Acosta — Chihuahua', en: 'Dr. Enrique Acosta Clinic — Chihuahua' },
-  admin_edit_content: { es: 'Edición de Contenido', en: 'Content Editing' },
-  admin_confirm_delete: { es: '¿Seguro que desea eliminar esta cita?', en: 'Are you sure you want to delete this appointment?' },
+  admin_save_changes: { es: 'Guardar en la Web', en: 'Save to Web' },
   admin_success: { es: '¡Plataforma actualizada!', en: 'Platform updated!' },
-  // Days of the week
-  day_mon: { es: 'Lunes', en: 'Monday' },
-  day_tue: { es: 'Martes', en: 'Tuesday' },
-  day_wed: { es: 'Miércoles', en: 'Wednesday' },
-  day_thu: { es: 'Jueves', en: 'Thursday' },
-  day_fri: { es: 'Viernes', en: 'Friday' },
-  day_sat: { es: 'Sábado', en: 'Saturday' },
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -86,9 +72,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     localStorage.setItem('acosta_lang', lang);
   };
 
-  const t = (key: string) => {
-    return translations[key]?.[language] || key;
-  };
+  const t = (key: string) => translations[key]?.[language] || key;
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
