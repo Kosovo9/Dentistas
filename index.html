@@ -3,91 +3,84 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <!-- Metadatos de SEO Dinámicos (Inyectados por React) -->
-    <title>Dr. Enrique Acosta | Sonrisas de Élite en Chihuahua</title>
-    <meta name="description" content="Odontología estética de alta gama en Chihuahua. Dr. Enrique Acosta: Especialista en Diseño de Sonrisa, Implantes y Ortodoncia Invisible con tecnología digital.">
+    <title>Dr. Enrique Acosta | Sonrisas de Élite</title>
+    <meta name="description" content="Odontología estética de alta gama en Chihuahua. Tecnología digital y hospitalidad boutique.">
     
-    <!-- AIO & Mobile Optimization -->
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    
-    <!-- Open Graph / Redes Sociales -->
-    <meta property="og:locale" content="es_MX">
-    <meta property="og:site_name" content="Dr. Enrique Acosta">
-    <meta property="og:title" content="Dr. Enrique Acosta | Sonrisas de Élite en Chihuahua">
-    <meta property="og:description" content="Transforma tu sonrisa con la tecnología dental más avanzada de México.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1200">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#0c1524">
-
-    <!-- Pre-conexión para fuentes y assets -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://images.unsplash.com">
+    <!-- Optimizaciones de Plataforma -->
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;900&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #0c1524;
+        :root {
+            --gold: #c5a059;
+            --navy: #0c1524;
+        }
+        
+        /* Reset de scroll para compatibilidad con iframes de preview */
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: var(--navy);
             color: white;
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
         }
+
         h1, h2, h3, .luxury-font {
             font-family: 'Playfair Display', serif;
         }
-        .bg-navy-luxury { background-color: #0c1524; }
-        .text-navy-luxury { color: #0c1524; }
-        .border-navy-luxury { border-color: #0c1524; }
-        .bg-gold-luxury { background-color: #c5a059; }
-        .text-gold-luxury { color: #c5a059; }
-        .border-gold-luxury { border-color: #c5a059; }
+
+        .bg-navy-luxury { background-color: var(--navy); }
+        .text-gold-luxury { color: var(--gold); }
+        .bg-gold-luxury { background-color: var(--gold); }
         
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0c1524; }
-        ::-webkit-scrollbar-thumb { background: #c5a059; border-radius: 10px; }
+        /* Scrollbar minimalista */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: var(--navy); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
         
-        /* Efecto de Borde Llamativo Profesional */
+        /* Botón con Marco de Ingeniería (Adaptativo) */
         .btn-luxury-frame {
             position: relative;
-            padding: 1.25rem 2.5rem;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: 0.8rem 1.5rem;
+            display: inline-flex;
+            transition: all 0.4s ease;
         }
+        @media (min-width: 768px) {
+            .btn-luxury-frame { padding: 1.25rem 2.5rem; }
+        }
+
         .btn-luxury-frame::before {
             content: '';
             position: absolute;
-            inset: -6px;
-            border: 1px solid rgba(197, 160, 89, 0.4);
-            border-radius: 2px;
-            transition: all 0.6s ease;
+            inset: -4px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
             pointer-events: none;
+            transition: all 0.4s ease;
         }
         .btn-luxury-frame:hover::before {
-            inset: 0px;
-            border-color: #c5a059;
-            background: rgba(197, 160, 89, 0.05);
+            inset: 0;
+            border-color: var(--gold);
         }
 
-        /* Texto Blanco con "Borde" Profesional (Glow/Shadow) */
         .luxury-text-pop {
-            text-shadow: 0 0 1px rgba(255,255,255,0.3), 0 0 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
+        /* Contenedor raíz para asegurar que ocupe todo el ancho */
+        #root {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #c5a059;
-        }
-
-        /* Previene Layout Shift */
-        .framer-motion-container { contain: paint; }
     </style>
 
     <script type="importmap">
@@ -104,7 +97,7 @@
     }
     </script>
 </head>
-<body class="bg-navy-luxury overflow-x-hidden">
+<body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>

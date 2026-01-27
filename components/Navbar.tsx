@@ -15,9 +15,7 @@ const Navbar: React.FC = () => {
   const isAdminPage = location.pathname === ADMIN_PATH;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -34,15 +32,10 @@ const Navbar: React.FC = () => {
 
   if (isAdminPage) {
     return (
-      <nav className="bg-navy-luxury text-white py-4 px-6 sticky top-0 z-50 shadow-xl border-b border-gold-luxury/20">
+      <nav className="bg-navy-luxury text-white py-4 px-6 border-b border-gold-luxury/20">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link to="/" className="text-xl luxury-font font-bold tracking-tighter">
-            DR. ENRIQUE <span className="text-gold-luxury">ACOSTA</span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline text-[10px] uppercase tracking-widest text-gold-luxury/60 font-bold">Admin Mode</span>
-            <Link to="/" className="text-[10px] uppercase tracking-widest border border-gold-luxury/40 px-6 py-2 rounded-sm hover:bg-gold-luxury hover:text-navy-luxury transition-all font-bold">Ver Sitio</Link>
-          </div>
+          <Link to="/" className="text-lg luxury-font font-bold">DR. ENRIQUE <span className="text-gold-luxury">ACOSTA</span></Link>
+          <Link to="/" className="text-[10px] uppercase tracking-widest border border-gold-luxury/40 px-4 py-2 rounded-sm hover:bg-gold-luxury hover:text-navy-luxury transition-all font-bold">Ver Sitio</Link>
         </div>
       </nav>
     );
@@ -50,96 +43,67 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled || isMobileMenuOpen ? 'bg-navy-luxury/98 backdrop-blur-2xl shadow-2xl py-3 border-b border-white/5' : 'bg-gradient-to-b from-black/60 to-transparent py-6'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <a href="#inicio" onClick={closeMobileMenu} className="text-xl md:text-2xl luxury-font font-bold tracking-tighter">
-            <span className="text-white drop-shadow-md">DR. ENRIQUE</span> <span className="text-gold-luxury drop-shadow-md">ACOSTA</span>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled || isMobileMenuOpen ? 'bg-navy-luxury shadow-2xl py-2' : 'bg-transparent py-4 md:py-6'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+          <a href="#inicio" onClick={closeMobileMenu} className="text-lg md:text-2xl luxury-font font-bold tracking-tighter">
+            <span className="text-white">DR. ENRIQUE</span> <span className="text-gold-luxury">ACOSTA</span>
           </a>
           
-          <div className="hidden md:flex items-center space-x-8">
-            {/* Global Switchers Group */}
-            <div className="flex items-center gap-4">
-              {/* Language Switcher */}
-              <div className="flex items-center gap-1 border border-white/20 p-1 rounded-sm bg-black/40">
-                {['es', 'en'].map((lang) => (
-                  <button 
-                    key={lang}
-                    onClick={() => setLanguage(lang as any)}
-                    className={`text-[8px] font-black px-2 py-1 rounded-sm transition-all ${language === lang ? 'bg-gold-luxury text-navy-luxury' : 'text-white/40 hover:text-white'}`}
-                  >
-                    {lang.toUpperCase()}
-                  </button>
+          {/* Desktop Menu - Visible only on large screens */}
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <div className="flex gap-2">
+              <div className="flex bg-black/40 p-1 rounded-sm border border-white/10">
+                {['es', 'en'].map(l => (
+                  <button key={l} onClick={() => setLanguage(l as any)} className={`text-[8px] font-black px-2 py-1 rounded-sm ${language === l ? 'bg-gold-luxury text-navy-luxury' : 'text-white/40'}`}>{l.toUpperCase()}</button>
                 ))}
               </div>
-
-              {/* Currency Switcher */}
-              <div className="flex items-center gap-1 border border-white/20 p-1 rounded-sm bg-black/40">
-                {['MXN', 'USD'].map((curr) => (
-                  <button 
-                    key={curr}
-                    onClick={() => setCurrency(curr as any)}
-                    className={`text-[8px] font-black px-2 py-1 rounded-sm transition-all ${currency === curr ? 'bg-gold-luxury text-navy-luxury' : 'text-white/40 hover:text-white'}`}
-                  >
-                    {curr}
-                  </button>
+              <div className="flex bg-black/40 p-1 rounded-sm border border-white/10">
+                {['MXN', 'USD'].map(c => (
+                  <button key={c} onClick={() => setCurrency(c as any)} className={`text-[8px] font-black px-2 py-1 rounded-sm ${currency === c ? 'bg-gold-luxury text-navy-luxury' : 'text-white/40'}`}>{c}</button>
                 ))}
               </div>
             </div>
 
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-[9px] uppercase tracking-[0.3em] font-black text-white/90 hover:text-gold-luxury transition-all relative group drop-shadow-sm"
-              >
-                {link.name}
-              </a>
+              <a key={link.name} href={link.href} className="text-[9px] uppercase tracking-[0.2em] font-black text-white/80 hover:text-gold-luxury transition-all">{link.name}</a>
             ))}
-            <a 
-              href="#contacto" 
-              className="bg-gold-luxury text-navy-luxury px-8 py-3 rounded-sm text-[9px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all shadow-xl active:scale-95"
-            >
-              {t('nav_reservar')}
-            </a>
+            
+            <a href="#contacto" className="bg-gold-luxury text-navy-luxury px-6 py-3 rounded-sm text-[9px] font-black uppercase tracking-[0.2em] hover:bg-white transition-all shadow-lg">{t('nav_reservar')}</a>
           </div>
 
-          <div className="md:hidden flex items-center gap-4">
+          {/* Mobile Toggle - Visible on anything smaller than large desktops */}
+          <div className="lg:hidden flex items-center">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-white p-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isMobileMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />}
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
               </svg>
             </button>
           </div>
         </div>
       </nav>
 
+      {/* Fullscreen Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            className="fixed inset-0 z-40 bg-navy-luxury flex flex-col justify-center items-center md:hidden"
+            className="fixed inset-0 z-40 bg-navy-luxury flex flex-col justify-center items-center lg:hidden"
           >
-            <div className="flex flex-col items-center space-y-8">
-              <div className="flex flex-col items-center gap-4">
-                <div className="flex gap-4 border border-white/10 p-2">
-                  <button onClick={() => setLanguage('es')} className={`text-xs font-bold ${language === 'es' ? 'text-gold-luxury' : 'text-white/40'}`}>ESPAÑOL</button>
-                  <button onClick={() => setLanguage('en')} className={`text-xs font-bold ${language === 'en' ? 'text-gold-luxury' : 'text-white/40'}`}>ENGLISH</button>
-                </div>
-                <div className="flex gap-4 border border-white/10 p-2">
-                  <button onClick={() => setCurrency('MXN')} className={`text-xs font-bold ${currency === 'MXN' ? 'text-gold-luxury' : 'text-white/40'}`}>MXN</button>
-                  <button onClick={() => setCurrency('USD')} className={`text-xs font-bold ${currency === 'USD' ? 'text-gold-luxury' : 'text-white/40'}`}>USD</button>
+            <div className="flex flex-col items-center space-y-8 px-6 text-center">
+              <div className="flex gap-4">
+                <div className="flex border border-white/10 p-2 gap-4">
+                  <button onClick={() => {setLanguage('es'); closeMobileMenu();}} className={`text-xs font-bold ${language === 'es' ? 'text-gold-luxury' : 'text-white/40'}`}>ES</button>
+                  <button onClick={() => {setLanguage('en'); closeMobileMenu();}} className={`text-xs font-bold ${language === 'en' ? 'text-gold-luxury' : 'text-white/40'}`}>EN</button>
                 </div>
               </div>
+              
               {navLinks.map((link) => (
-                <a key={link.name} href={link.href} onClick={closeMobileMenu} className="text-2xl uppercase tracking-[0.4em] font-light text-white">
-                  {link.name}
-                </a>
+                <a key={link.name} href={link.href} onClick={closeMobileMenu} className="text-2xl uppercase tracking-[0.4em] font-light text-white">{link.name}</a>
               ))}
-              <a href="#contacto" onClick={closeMobileMenu} className="bg-gold-luxury text-navy-luxury px-12 py-4 rounded-sm text-xs font-bold uppercase tracking-[0.3em]">
-                {t('nav_reservar')}
-              </a>
+              
+              <a href="#contacto" onClick={closeMobileMenu} className="bg-gold-luxury text-navy-luxury px-12 py-4 rounded-sm text-xs font-bold uppercase tracking-[0.3em]">{t('nav_reservar')}</a>
             </div>
           </motion.div>
         )}
